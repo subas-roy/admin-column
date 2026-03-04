@@ -21,7 +21,13 @@ class AdminColumn {
         $this->init_hooks();
     }
 
-    public function includes() {}
+    public function includes() {
+        if (file_exists(ADMIN_COLUMN_PATH . 'includes/App/CustomColumn.php')) {
+            require_once ADMIN_COLUMN_PATH . 'includes/App/CustomColumn.php';
+        }
+
+        new CustomColumn(); 
+    }
 
     public function init_hooks() {
         load_plugin_textdomain('admin-column', false, ADMIN_COLUMN_PATH . 'i18n/');
