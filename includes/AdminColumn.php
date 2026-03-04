@@ -3,7 +3,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-
 class AdminColumn {
 
     public function init() {
@@ -13,10 +12,18 @@ class AdminColumn {
 
     public function define_constents() {
         define('ADMIN_COLUMN_VERSION', '1.0.0');
-        define('ADMIN_COLUMN_PLUGIN_DIR', plugin_dir_path(__DIR__)); // Needs to include files, so we need the directory path.
-        define('ADMIN_COLUMN_PLUGIN_URL', plugin_dir_url(__DIR__)); // Needs to load assets like CSS and JS, so we need the URL.
+        define('ADMIN_COLUMN_PATH', plugin_dir_path(__DIR__)); 
+        define('ADMIN_COLUMN_URL', plugin_dir_url(__DIR__)); 
     }
 
-    public function init_plugin() {}
+    public function init_plugin() {
+        $this->includes();
+        $this->init_hooks();
+    }
 
+    public function includes() {}
+
+    public function init_hooks() {
+        load_plugin_textdomain('admin-column', false, ADMIN_COLUMN_PATH . 'i18n/');
+    }
 }
