@@ -8,6 +8,7 @@ class CustomColumn {
         add_filter('manage_posts_columns', [$this, 'add_custom_column']); // Hook to add custom column
         add_action('manage_posts_custom_column', [$this, 'render_column'], 10, 2); // Hook to add custom column and render its content
         add_filter('manage_edit-post_sortable_columns', [$this, 'make_sortable_column']); // Hook to make the column sortable
+        add_filter('pre_get_posts', [$this, 'sort_column']); 
     }
 
     public function add_custom_column($columns) { // Add a new column with the key 'price' and label 'Price'
@@ -28,5 +29,12 @@ class CustomColumn {
     public function make_sortable_column($columns) {
         $columns['price'] = 'Price';
         return $columns;
+    }
+
+    public function sort_column($query) {
+        if($query->get('orderby') === 'price') {
+            $query->set('meta_key', 'price'); // ACF way
+            $query->set('orderby', 'meta_value_num'); // Sort by numeric value
+        }
     }
 }
