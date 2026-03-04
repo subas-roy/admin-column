@@ -15,3 +15,10 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+if (file_exists(plugin_dir_path(__FILE__) . 'includes/AdminColumn.php')) { 
+    require_once plugin_dir_path(__FILE__) . 'includes/AdminColumn.php';
+}
+
+$admin_column = new AdminColumn(); 
+$admin_column->init();
