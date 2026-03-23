@@ -20,6 +20,21 @@ class CustomColumn {
         // esc_attr__() // return data
         // esc_attr_e() // void, echo data
         // esc_attr_x() // return data, data explaination
+
+        // $first_part['test-1'] = printf(
+        // /* translators: %s: Url to the website */
+        // _( 'Please visit our website at %s for more information', 'admin-admin' ),
+        // "<a href='https://sayedulsayem.com/'>Sayedul Sayem</a>"
+        // );
+        // $first_part['test-2'] = printf(
+        // /* translators: 1: Name of a city 2: ZIP code */
+        // ('Your city is %1$s, and your zip code is %2$s.', 'my-plugin'),
+        //'Dhaka',
+        // '1205'
+        //);
+        // $first_part['price'] = esc_html_x('park', 'A place where people enjoy weekend', 'admin-column');
+        // $first_part['price'] = esc_html_x('park', 'Place your car for shopping', 'admin-column');
+        
         return $columns;
     }
 
