@@ -12,7 +12,14 @@ class CustomColumn {
     }
 
     public function add_custom_column($columns) { // Add a new column with the key 'price' and label 'Price'
-        $columns['price'] = 'Price';
+        $columns['price'] = esc_html__('Price', 'admin-column');
+
+        // esc_html__() // return data
+        // esc_html_e() // void, echo data
+        // esc_html_x() // return data, data explaination
+        // esc_attr__() // return data
+        // esc_attr_e() // void, echo data
+        // esc_attr_x() // return data, data explaination
         return $columns;
     }
 
